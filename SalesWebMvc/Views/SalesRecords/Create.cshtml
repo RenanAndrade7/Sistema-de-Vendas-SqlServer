@@ -1,0 +1,45 @@
+﻿@model  SalesWebMvc.Models.ViewModels.SalesFormViewModel
+
+@{ 
+    ViewData["Title"] = "Cadastro";
+}
+
+<h2>@ViewData["Title"]</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div class="form-group">
+                    <dt>
+                        <label asp-for="IdSeller" class="control-label"></label>
+                    </dt>
+                    <dd>
+                        <select asp-for="IdSeller" asp-items="@(new SelectList(Model.Sellers,"Id","Name"))" class="form-control"></select>
+                    </dd>
+
+                    <dt>
+                        <label asp-for="DateSales" class="control-label"></label>
+                    </dt>
+                    <dd>
+                        @Html.TextBoxFor(p => p.DateSales, new { @type = "date" })
+                    </dd>
+
+                    <dt>
+                        <label asp-for="Status" class="control-label"></label>
+                    </dt>
+                    <dd>
+                        <select asp-for="Status" asp-items="@(new SelectList(Model.SalesStatus,"Indice","Texto"))" class="form-control"></select>
+                    </dd>
+
+                    <dt>
+                        <label asp-for="Amount" class="control-label"></label>
+                    </dt>
+                    <dd>
+                        @Html.TextBoxFor(p => p.Amount)
+                    </dd>
+                </dl>              
+            </div>
+            <input type="submit" value="Create" class="btn btn-default" />
+        </form>
+    </div>
+</div>
